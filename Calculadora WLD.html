@@ -1,0 +1,39 @@
+<html><head><base target="_blank">
+
+
+    <meta charset="UTF-8">
+    <title>Calculadora de WorldCoins</title>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f2f2f2; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+    <div style="background-color: #9370DB; padding: 10px; border-radius: 5px; margin-bottom: 20px;">
+        <h1 style="color: #fff; margin: 0;">Calculadora de WorldCoins</h1>
+    </div>
+    
+    <label for="worldcoins" style="font-weight: bold; margin-right: 10px;">Cantidad de WorldCoins:</label>
+    <input type="number" id="worldcoins" placeholder="Ingresa la cantidad de WorldCoins" style="padding: 5px; border: 1px solid #3498db; border-radius: 3px;">
+    
+    <button onclick="calcularValor()" style="background-color: #3498db; color: #fff; padding: 10px 20px; border: none; border-radius: 3px; cursor: pointer;">Calcular</button>
+    
+    <div id="resultados" style="margin-top: 20px;">
+        <div style="background-color: #9370DB; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+            <p style="color: #fff;">Valor en Dólares: <span id="valor-dolares" style="font-weight: bold; color: #fff;"></span></p>
+        </div>
+        <div style="background-color: #9370DB; padding: 10px; border-radius: 5px;">
+            <p style="color: #fff;">Valor en Pesos Argentinos: <span id="valor-pesos" style="font-weight: bold; color: #fff;"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function calcularValor() {
+            var worldcoins = parseFloat(document.getElementById("worldcoins").value);
+            var valorDolar = 7; // Cambia la tasa de cambio en esta línea
+            var tasaDolarBlue = 1100; // Cambia la tasa de cambio en esta línea
+            var valorDolares = worldcoins * valorDolar;
+            var valorPesosArgentinos = valorDolares * tasaDolarBlue;
+            document.getElementById("valor-dolares").textContent = valorDolares.toFixed(2);
+            document.getElementById("valor-pesos").textContent = valorPesosArgentinos.toFixed(2);
+        }
+    </script>
+
+
+</body></html>
