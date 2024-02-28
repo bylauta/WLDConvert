@@ -1,6 +1,6 @@
-<html><head><base target="_blank">
-
-
+<html>
+<head>
+    <base target="_blank">
     <meta charset="UTF-8">
     <title>Calculadora de WorldCoins</title>
 </head>
@@ -11,16 +11,23 @@
     
     <label for="worldcoins" style="font-weight: bold; margin-right: 10px;">Cantidad de WorldCoins:</label>
     <br>
-    <input type="number" id="worldcoins" placeholder="Ingresa la cantidad de WorldCoins" style="padding: 5px; border: 1px solid #3498db; border-radius: 30px;">
+    <input type="number" id="worldcoins" placeholder="Ingresa los WorldCoins" style="padding: 5px; border: 1px solid #3498db; border-radius: 30px;text-align: center;">
     <br>
     <button onclick="calcularValor()" style="background-color: #000000; color: #fff; padding: 10px 20px; border: none; border-radius: 30px; cursor: pointer;">Calcular</button>
     
     <div id="resultados" style="margin-top: 20px;">
-        <div style="background-color: #000000; padding: 6px; border-radius: 30px; margin-bottom: 10px;">
-            <p style="color: #fff;">Valor en Dólares: <span id="valor-dolares" style="font-weight: bold; color: #fff;"></span></p>
+        <div style="background-color: #000000; padding: 10px; border-radius: 30px; margin-bottom: 10px;">
+            <p style="color: #fff;text-align: center;">Valor en Dólares: <span id="valor-dolares" style="font-weight: bold; color: #fff;"></span></p>
         </div>
-        <div style="background-color: #000000; padding: 6px; border-radius: 30px;">
-            <p style="color: #fff;">Valor en Pesos Argentinos: <span id="valor-pesos" style="font-weight: bold; color: #fff;"></span></p>
+        <div style="background-color: #000000; padding: 10px; border-radius: 30px; margin-bottom: 10px;">
+            <p style="color: #fff; text-align: center;">Valor en Pesos Argentinos: <span id="valor-pesos" style="font-weight: bold; color: #fff;"></span></p>
+        </div>
+        <div style="background-color: #fa2323; padding: 10px; border-radius: 30px; text-align: center; display: none;" id="botonCongelar">
+            <a href="https://ig.me/m/wldtransfer" target="_blank" style="text-decoration: none; color: #e64646;">
+                <button style="background-color: transparent; border: none; cursor: pointer;">
+                    <h2 style="color: #fff;">💲 Congelar Precio 💲</h2>
+                </button>
+            </a>
         </div>
     </div>
 
@@ -28,6 +35,10 @@
         let url ="https://dolarapi.com/v1/dolares";
         let url2 ="https://api.coinlore.net/api/tickers/";
     
+        function mostrarBotonCongelar() {
+            document.getElementById("botonCongelar").style.display = "block";
+        }
+
         function calcularValor() {
             var worldcoins = parseFloat(document.getElementById("worldcoins").value);
     
@@ -49,6 +60,7 @@
                                 var valorPesosArgentinos = valorDolares * tasaDolarBlueCompra;
                                 document.getElementById("valor-dolares").textContent = valorDolares.toFixed(2);
                                 document.getElementById("valor-pesos").textContent = valorPesosArgentinos.toFixed(2);
+                                mostrarBotonCongelar(); // Mostrar el botón "Congelar Precio" después de calcular
                             })
                             .catch(error => {
                                 console.error('Error al obtener la tasa de cambio:', error);
@@ -62,6 +74,5 @@
                 });
         }
     </script>
-
-
-</body></html>
+</body>
+</html>
