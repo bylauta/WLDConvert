@@ -25,7 +25,7 @@
         <div style="background-color: #fa2323; padding: 10px; border-radius: 30px; text-align: center; display: none;" id="botonCongelar"
         onmouseover="this.style.backgroundColor='#0099ff'; document.getElementById('textoCongelar').innerText = '❄️ Congelar Precio ❄️';"
         onmouseout="this.style.backgroundColor='#fa2323'; document.getElementById('textoCongelar').innerText = '💲 Congelar Precio 💲';">
-            <a href="https://acortar.link/be6hnJ" target="_blank" style="text-decoration: none; color: #e64646;">
+            <a id="enlaceWhatsapp" target="_blank" style="text-decoration: none; color: #e64646;">
                 <button style="background-color: transparent; border: none; cursor: pointer;">
                     <h2 style="color: #fff;" id="textoCongelar">💲 Congelar Precio 💲</h2>
                 </button>
@@ -61,7 +61,15 @@
                                 var valorDolares = worldcoins * valorDolar20;
                                 var valorPesosArgentinos = valorDolares * tasaDolarBlueCompra;
                                 document.getElementById("valor-dolares").textContent = valorDolares.toFixed(2);
-                                document.getElementById("valor-pesos").textContent = valorPesosArgentinos.toFixed(2);
+                                document.getElementById("valor-pesos").textContent = "$" + valorPesosArgentinos.toFixed(2); // Agregar el signo "$" delante del valor
+
+                                // Generar el enlace de WhatsApp con el valor de valorPesosArgentinos
+                                var valorPesosArgentinosString = encodeURIComponent(valorPesosArgentinos.toFixed(2));
+                                var worldcoinsString = encodeURIComponent(worldcoins.toFixed(2));
+                                var enlaceWhatsapp = document.getElementById("enlaceWhatsapp");
+                                var enlaceHref = "https://wa.me/541173696298/?text=Hola%20me%20comunico%20para%20realizar%20un%20intercambio,%20mi%20precio%20es:%20(%20$" + valorPesosArgentinosString + ")%20Cantidad%20de%20WorldCoins:%20(%20WLD%20" + worldcoinsString + ")";
+                                enlaceWhatsapp.href = enlaceHref;
+
                                 mostrarBotonCongelar(); // Mostrar el botón "Congelar Precio" después de calcular
                             })
                             .catch(error => {
