@@ -22,10 +22,12 @@
         <div style="background-color: #000000; padding: 10px; border-radius: 30px; margin-bottom: 10px;">
             <p style="color: #fff; text-align: center;">Valor en Pesos Argentinos: <span id="valor-pesos" style="font-weight: bold; color: #fff;"></span></p>
         </div>
-        <div style="background-color: #fa2323; padding: 10px; border-radius: 30px; text-align: center; display: none;" id="botonCongelar">
+        <div style="background-color: #fa2323; padding: 10px; border-radius: 30px; text-align: center; display: none;" id="botonCongelar"
+        onmouseover="this.style.backgroundColor='#0099ff'; document.getElementById('textoCongelar').innerText = '❄️ Congelar Precio ❄️';"
+        onmouseout="this.style.backgroundColor='#fa2323'; document.getElementById('textoCongelar').innerText = '💲 Congelar Precio 💲';">
             <a href="https://ig.me/m/wldtransfer" target="_blank" style="text-decoration: none; color: #e64646;">
                 <button style="background-color: transparent; border: none; cursor: pointer;">
-                    <h2 style="color: #fff;">💲 Congelar Precio 💲</h2>
+                    <h2 style="color: #fff;" id="textoCongelar">💲 Congelar Precio 💲</h2>
                 </button>
             </a>
         </div>
